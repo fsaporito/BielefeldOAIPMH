@@ -1,3 +1,28 @@
+#################
+## Logs
+#################
+*.log
+
+#################
+## Eclipse
+#################
+.project
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+
+#################
+## Maven
+#################
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -7,5 +32,20 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
-# https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+/.metadata/
+
+
+#################
+## Windows
+#################
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
