@@ -7,6 +7,7 @@ public interface RecordDumperInterface {
 	
 	public static final String genericRecordDumperName = "RecordDumper";
 	public static final String mockRecordDumperName = "Mock";
+	public static final String csvRecordDumperName = "CSV";
 	
 	public void setLogger(String loggerName);
 	

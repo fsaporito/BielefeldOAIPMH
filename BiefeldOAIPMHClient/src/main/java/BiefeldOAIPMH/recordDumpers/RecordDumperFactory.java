@@ -1,7 +1,5 @@
 package BiefeldOAIPMH.recordDumpers;
 
-import java.util.Properties;
-
 public class RecordDumperFactory {
 
 	public RecordDumperFactory() {
@@ -16,6 +14,8 @@ public class RecordDumperFactory {
 			throw new RecordDumpException("Received RecordDumper Name is blanck");
 		if (recordDumperName.equalsIgnoreCase(RecordDumperInterface.mockRecordDumperName))
 			return new RecordDumperMock(configFilePath);
+		if (recordDumperName.equalsIgnoreCase(RecordDumperInterface.csvRecordDumperName))
+			return new RecordDumperMock(configFilePath);		
 		throw new RecordDumpException("Couldn't build the given recordDumper: " + recordDumperName);
 	}
 

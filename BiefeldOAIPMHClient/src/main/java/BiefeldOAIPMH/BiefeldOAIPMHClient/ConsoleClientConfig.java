@@ -1,9 +1,7 @@
 package BiefeldOAIPMH.BiefeldOAIPMHClient;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LoggerContext;
@@ -44,38 +42,44 @@ public class ConsoleClientConfig {
 	public ConsoleClientConfig() throws IOException
 	{
 		final String methodName = "::ConsoleClientConfig() ";
-		try {
+		try 
+		{
 		
-			var prop = loadConfigFile(configFilePath);
+			var prop = BiefeldOAIPMH.backendConnector.CommonUtils.loadConfigFile(configFilePath);
 		
 			// Logger Path
-	 		this.loggerPath = readFromProp(prop, propKeyLoggerPath, configFilePath);
+	 		this.loggerPath = BiefeldOAIPMH.backendConnector.CommonUtils.readFromProp(prop, propKeyLoggerPath, configFilePath);
 			LoggerContext context = (org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
 			File file = new File(this.loggerPath);
 			context.setConfigLocation(file.toURI());
 			
 			// Client Logger Name
-			this.clientLoggerName = readFromProp(prop, propKeyClientLoggerName, configFilePath);
+			this.clientLoggerName = BiefeldOAIPMH.backendConnector.CommonUtils.readFromProp(prop, propKeyClientLoggerName, configFilePath);
 			this.logger = LogManager.getLogger(this.clientLoggerName);
 			
 			// Backend Connector Logger Name
-			this.backendConnectorLoggerName = readFromProp(prop, propKeyBackendConnectorLoggerName, configFilePath);
+			this.backendConnectorLoggerName = BiefeldOAIPMH.backendConnector.CommonUtils.readFromProp(prop, propKeyBackendConnectorLoggerName, configFilePath);
 			
 			// Record Getter
-			this.getterType = readFromProp(prop, propKeyGetterType, configFilePath);
-			this.getterLoggerName = readFromProp(prop, propKeyGetterLoggerName, configFilePath);
-			this.getterPropsFileName = readFromProp(prop, propKeyGetterPropsFile, configFilePath);
+			this.getterType = BiefeldOAIPMH.backendConnector.CommonUtils.readFromProp(prop, propKeyGetterType, configFilePath);
+			this.getterLoggerName = BiefeldOAIPMH.backendConnector.CommonUtils.readFromProp(prop, propKeyGetterLoggerName, configFilePath);
+			this.getterPropsFileName = BiefeldOAIPMH.backendConnector.CommonUtils.readFromProp(prop, propKeyGetterPropsFile, configFilePath);
 			
 			// Record Dumper
-			this.dumperType = readFromProp(prop, propKeyDumperType, configFilePath);
-			this.dumperLoggerName = readFromProp(prop, propKeyDumperLoggerName, configFilePath);
-			this.dumperPropsFileName = readFromProp(prop, propKeyDumperPropsFile, configFilePath);
+			this.dumperType = BiefeldOAIPMH.backendConnector.CommonUtils.readFromProp(prop, propKeyDumperType, configFilePath);
+			this.dumperLoggerName = BiefeldOAIPMH.backendConnector.CommonUtils.readFromProp(prop, propKeyDumperLoggerName, configFilePath);
+			this.dumperPropsFileName = BiefeldOAIPMH.backendConnector.CommonUtils.readFromProp(prop, propKeyDumperPropsFile, configFilePath);
 			
 			this.logger.info(methodName + " ConsoleClient ConfigObject initialized from " + configFilePath);
 			this.logger.trace(methodName + "Read Properties: \n" + this.toString());
 				
 		} catch (IOException e) {
 			logger.fatal(methodName + "Couldn't load configuration file " + configFilePath);
+			throw e;
+		} catch (NullPointerException e)
+		{
+			logger.fatal(methodName + "Couldn't load configuration file " + configFilePath 
+					+ " " + e.getMessage());
 			throw e;
 		}
 	}
@@ -110,25 +114,6 @@ public class ConsoleClientConfig {
 
 	public String getDumperLoggerName() {
 		return dumperLoggerName;
-	}
-
-	protected Properties loadConfigFile(String path) throws IOException
-	{
-		Properties prop = new Properties();
- 		FileInputStream fileStream = null;
- 		fileStream = new FileInputStream(path);
- 		prop.load(fileStream); 		   
-		return prop;
-	}
-	
-	protected String readFromProp(Properties prop, String propName, String configFilePath)
-	{
-		String propValue = prop.getProperty(propName);
- 		if (propValue == null)
- 		{
- 			throw new NullPointerException("Property " + propName + " wasn't found in the prop file " + configFilePath);
- 		}
- 		return propValue;
 	}
 	
 	public org.apache.logging.log4j.Logger getLogger() 

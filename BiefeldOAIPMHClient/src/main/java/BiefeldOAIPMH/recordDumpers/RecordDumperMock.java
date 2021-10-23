@@ -43,7 +43,7 @@ public class RecordDumperMock implements RecordDumperInterface
 			dataStr += data.entrySet()
 					.stream()
 		            .map(entry -> "    - " + entry.getKey() + " : " + entry.getValue())
-		            .collect(Collectors.joining("\n "));
+		            .collect(Collectors.joining("\n"));
 		}
 		this.logger.info(methodName + dumpStr + dataStr);
 	}
