@@ -1,7 +1,6 @@
 package BiefeldOAIPMH.recordGetters;
 
 import java.util.HashMap;
-import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 
@@ -33,7 +32,7 @@ public class RecordGetterMock implements RecordGetterInterface {
 
 	@Override
 	public HashMap<String, String> ask(String actionName, HashMap<String, String> parametersMap)
-			throws RecordAskException 
+			throws RecordAskException
 	{
 		final String methodName = "::ask() ";
 		var askStr = RecordGetterInterface.askOperationToStr(actionName, parametersMap);
