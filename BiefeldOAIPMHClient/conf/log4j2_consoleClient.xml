@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="RootConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}%msg%n"/>
+        </Console>
+         <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}%msg%n"/>
+            <LevelRangeFilter minLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+        <RollingFile name="FileClient" fileName="logs/consoleClient.log" filePattern="logs/consoleClient-%i.log">
+            <PatternLayout>
+                <Pattern>%d [%t] %-5p %c%m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <!--TimeBasedTriggeringPolicy interval="24" modulate="true"/-->
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="BiefeldOAIPMH.consoleClient">
+            <AppenderRef ref="FileClient"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="all">
+            <AppenderRef ref="RootConsole"/>
+        </Root>
+    </Loggers>
+</Configuration>
+    
+    
+ 
