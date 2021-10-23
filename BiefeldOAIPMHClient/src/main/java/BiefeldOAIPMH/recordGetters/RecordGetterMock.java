@@ -19,9 +19,9 @@ public class RecordGetterMock implements RecordGetterInterface {
 	}
 
 	@Override
-	public String getRecordGetterType() 
+	public String getRecordGetterType()
 	{
-		return "MockRecordGetter";
+		return genericRecordGetterName + RecordGetterInterface.mockRecordGetterName;
 	}
 
 	@Override

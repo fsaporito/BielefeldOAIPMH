@@ -5,6 +5,9 @@ import java.util.HashMap;
 
 public interface RecordDumperInterface {
 	
+	public static final String genericRecordDumperName = "RecordDumper";
+	public static final String mockRecordDumperName = "Mock";
+	
 	public void setLogger(String loggerName);
 	
 	public String getRecordDumperType();

@@ -1,6 +1,6 @@
 package BiefeldOAIPMH.recordGetters;
 
-public class RecordAskException extends Exception {
+public class RecordAskException extends RecordGetterException {
 
 	/**
 	 * 

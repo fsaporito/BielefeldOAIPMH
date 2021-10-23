@@ -16,10 +16,23 @@ public class ConsoleClientConfig {
 	
 	
 	protected static final String propKeyLoggerPath = "loggerConfigPath";
-	protected static final String propKeyLoggerName = "loggerName";
-	
 	protected String loggerPath;
-	protected String loggerName;
+	
+	protected static final String propKeyClientLoggerName = "clientLoggerName";
+	protected String clientLoggerName;
+	
+	protected static final String propKeyBackendConnectorLoggerName = "backendConnectorLoggerName";
+	protected String backendConnectorLoggerName;
+	
+	protected static final String propKeyGetterType = "getterType";
+	protected String getterType;
+	protected static final String propKeyGetterLoggerName = "getterLoggerName";
+	protected String getterLoggerName;
+	
+	protected static final String propKeyDumperType = "dumperType";
+	protected String dumperType;
+	protected static final String propKeyDumperLoggerName = "dumperLoggerName";
+	protected String dumperLoggerName;
 	
 	protected org.apache.logging.log4j.Logger logger = LogManager.getRootLogger();
 	
@@ -32,14 +45,24 @@ public class ConsoleClientConfig {
 		
 			// Logger Path
 	 		this.loggerPath = readFromProp(prop, propKeyLoggerPath, configFilePath);
-			//System.setProperty("log4j2.configurationFile", loggerPath);
 			LoggerContext context = (org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
 			File file = new File(this.loggerPath);
 			context.setConfigLocation(file.toURI());
 			
-			// Logger Name
-			this.loggerName = readFromProp(prop, propKeyLoggerName, configFilePath);
-			this.logger = LogManager.getLogger(this.loggerName);
+			// Client Logger Name
+			this.clientLoggerName = readFromProp(prop, propKeyClientLoggerName, configFilePath);
+			this.logger = LogManager.getLogger(this.clientLoggerName);
+			
+			// Backend Connector Logger Name
+			this.backendConnectorLoggerName = readFromProp(prop, propKeyBackendConnectorLoggerName, configFilePath);
+			
+			// Record Getter
+			this.getterType = readFromProp(prop, propKeyGetterType, configFilePath);
+			this.getterLoggerName = readFromProp(prop, propKeyGetterLoggerName, configFilePath);
+			
+			// Record Dumper
+			this.dumperType = readFromProp(prop, propKeyDumperType, configFilePath);
+			this.dumperLoggerName = readFromProp(prop, propKeyDumperLoggerName, configFilePath);
 			
 			this.logger.info(methodName + " ConsoleClient ConfigObject initialized from " + configFilePath);
 			this.logger.trace(methodName + "Read Properties: \n" + this.toString());
@@ -48,6 +71,30 @@ public class ConsoleClientConfig {
 			logger.fatal(methodName + "Couldn't load configuration file " + configFilePath);
 			throw e;
 		}
+	}
+
+	public String getClientLoggerName() {
+		return clientLoggerName;
+	}
+
+	public String getBackendConnectorLoggerName() {
+		return backendConnectorLoggerName;
+	}
+
+	public String getGetterType() {
+		return getterType;
+	}
+
+	public String getGetterLoggerName() {
+		return getterLoggerName;
+	}
+
+	public String getDumperType() {
+		return dumperType;
+	}
+
+	public String getDumperLoggerName() {
+		return dumperLoggerName;
 	}
 
 	protected Properties loadConfigFile(String path) throws IOException
@@ -76,7 +123,13 @@ public class ConsoleClientConfig {
 
 	@Override
 	public String toString() {
-		return "    - loggerPath=" + loggerPath + "\n    - loggerName=" + loggerName;
+		return "    - loggerPath=" + this.loggerPath 
+		   + "\n    - cLientLoggerName=" + this.clientLoggerName
+		   + "\n    - backendConnectorLoggerName=" + this.backendConnectorLoggerName
+		   + "\n    - getterType=" + this.getterType
+		   + "\n    - getterLoggerName=" + this.getterLoggerName
+		   + "\n    - dumperType=" + this.dumperType
+		   + "\n    - dumperLoggerName=" + this.dumperLoggerName;
 	}
 	
 	

@@ -9,7 +9,34 @@
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}%msg%n"/>
             <LevelRangeFilter minLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
-        <RollingFile name="FileClient" fileName="logs/consoleClient.log" filePattern="logs/consoleClient-%i.log">
+        <RollingFile name="ConsoleClient" fileName="logs/consoleClient.log" filePattern="logs/consoleClient-%i.log">
+            <PatternLayout>
+                <Pattern>%d [%t] %-5p %c%m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <!--TimeBasedTriggeringPolicy interval="24" modulate="true"/-->
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="RecordGetter" fileName="logs/recordGetter.log" filePattern="logs/recordGetter-%i.log">
+            <PatternLayout>
+                <Pattern>%d [%t] %-5p %c%m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <!--TimeBasedTriggeringPolicy interval="24" modulate="true"/-->
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="RecordDumper" fileName="logs/recordDumper.log" filePattern="logs/recordDumper-%i.log">
+            <PatternLayout>
+                <Pattern>%d [%t] %-5p %c%m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <!--TimeBasedTriggeringPolicy interval="24" modulate="true"/-->
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="BackendConnector" fileName="logs/backendConnector.log" filePattern="logs/backendConnector-%i.log">
             <PatternLayout>
                 <Pattern>%d [%t] %-5p %c%m%n</Pattern>
             </PatternLayout>
@@ -21,7 +48,19 @@
     </Appenders>
     <Loggers>
         <Logger name="BiefeldOAIPMH.consoleClient">
-            <AppenderRef ref="FileClient"/>
+            <AppenderRef ref="ConsoleClient"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="BiefeldOAIPMH.recordGetter">
+            <AppenderRef ref="RecordGetter"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="BiefeldOAIPMH.recordDumper">
+            <AppenderRef ref="RecordDumper"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="BiefeldOAIPMH.backendConnector">
+            <AppenderRef ref="BackendConnector"/>
             <AppenderRef ref="Console"/>
         </Logger>
         <Root level="all">

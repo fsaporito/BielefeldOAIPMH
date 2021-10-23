@@ -22,9 +22,9 @@ public class RecordDumperMock implements RecordDumperInterface
 	}
 
 	@Override
-	public String getRecordDumperType() 
+	public String getRecordDumperType()
 	{
-		return "RecordDumperMock";
+		return genericRecordDumperName + mockRecordDumperName;
 	}
 
 	@Override

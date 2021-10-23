@@ -3,7 +3,11 @@ package BiefeldOAIPMH.recordGetters;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
-public interface RecordGetterInterface {
+public interface RecordGetterInterface 
+{
+	
+	public static final String genericRecordGetterName = "RecordGetter";
+	public static final String mockRecordGetterName = "Mock";
 	
 	final static String OP_NumberOfPublicationsPerYear = "NumberOfPublicationsPerYear";
 	final static String OP_NumberOfRecordsPerTypology = "NumberOfRecordsPerTypology";

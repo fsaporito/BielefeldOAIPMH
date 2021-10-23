@@ -5,8 +5,10 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 
 import BiefeldOAIPMH.backendConnector.BackendConnector;
+import BiefeldOAIPMH.recordDumpers.RecordDumpException;
 import BiefeldOAIPMH.recordDumpers.RecordDumperFactory;
 import BiefeldOAIPMH.recordDumpers.RecordDumperInterface;
+import BiefeldOAIPMH.recordGetters.RecordGetterException;
 import BiefeldOAIPMH.recordGetters.RecordGetterFactory;
 import BiefeldOAIPMH.recordGetters.RecordGetterInterface;
 
@@ -17,17 +19,31 @@ public class ConsoleClient
 	
 	protected BackendConnector<RecordGetterInterface, RecordDumperInterface> backendConnector;
 
-	public ConsoleClient() throws IOException
+	public ConsoleClient() throws IOException, RecordGetterException, RecordDumpException
 	{
 		final String methodName = "::BackendAPI()";
 		try {
+			
 			this.config = new ConsoleClientConfig();
+			
 			this.logger = this.config.getLogger();
-			RecordGetterInterface getter = RecordGetterFactory.buildRecordGetter("Mock");
-			RecordDumperInterface dumper = RecordDumperFactory.buildRecordDumper("Mock");
-			this.backendConnector = new BackendConnector<RecordGetterInterface, RecordDumperInterface> (getter, dumper);
+			
+			RecordGetterInterface getter = RecordGetterFactory.buildRecordGetter(this.config.getGetterType());
+			getter.setLogger(this.config.getGetterLoggerName());
+			
+			RecordDumperInterface dumper = RecordDumperFactory.buildRecordDumper(this.config.getDumperType());
+			dumper.setLogger(this.config.getDumperLoggerName());
+			
+			this.backendConnector = new BackendConnector<> (getter, dumper, this.config.getBackendConnectorLoggerName());
+		
 		} catch (IOException e) {
 			logger.fatal(methodName + "Couldn't load configuration file, aborting");
+			throw e;
+		} catch (RecordGetterException e) {
+			logger.fatal(methodName + e.getMessage());
+			throw e;
+		} catch (RecordDumpException e) {
+			logger.fatal(methodName + e.getMessage());
 			throw e;
 		}
 		this.logger.info(methodName + " Console ClientObject initialized");

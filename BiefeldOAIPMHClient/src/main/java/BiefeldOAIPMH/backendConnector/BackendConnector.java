@@ -32,10 +32,10 @@ public class BackendConnector<RecordGetter extends RecordGetterInterface,
 		this.setLogger(LoggerName);
 		this.logger.trace(methodName + "Initializing Backend Connector");
 		this.getter = getter;
-		this.logger.info(methodName + "Record Getter => " + this.getter.getRecordGetterType());
+		this.logger.info(methodName + "Selected Record Getter => " + this.getter.getRecordGetterType());
 		this.logger.trace(methodName + this.getter.getRecordGetterDesc());
 		this.dumper = dumper;
-		this.logger.info(methodName + "Record Dumper => " + this.dumper.getRecordDumperType());
+		this.logger.info(methodName + "Selected Record Dumper => " + this.dumper.getRecordDumperType());
 		this.logger.trace(methodName + this.dumper.getRecordDumperDesc());
 	}
 	
