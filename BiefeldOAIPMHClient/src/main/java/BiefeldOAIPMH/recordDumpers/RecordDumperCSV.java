@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Properties;
-import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 
@@ -16,7 +15,7 @@ public class RecordDumperCSV implements RecordDumperInterface {
 	protected static final String propKeyCSVOutputPath = "csvOutputPath";
 	protected String csvOutputPath;
 	
-	public RecordDumperCSV(String configFilePath) throws IOException
+	public RecordDumperCSV(String configFilePath) throws RecordDumpException 
 	{
 		final String methodName = "::RecordDumperCSV() ";
 		try 
@@ -28,12 +27,12 @@ public class RecordDumperCSV implements RecordDumperInterface {
 		
 		} catch (IOException e) {
 			logger.fatal(methodName + "Couldn't load configuration file " + configFilePath);
-			throw e;
+			throw new RecordDumpException(e.getMessage());
 		} catch (NullPointerException e)
 		{
 			logger.fatal(methodName + "Couldn't load configuration file " + configFilePath 
 					+ " " + e.getMessage());
-			throw e;
+			throw new RecordDumpException(e.getMessage());
 		}
 	}
 

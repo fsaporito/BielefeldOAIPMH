@@ -15,7 +15,7 @@ public class RecordDumperFactory {
 		if (recordDumperName.equalsIgnoreCase(RecordDumperInterface.mockRecordDumperName))
 			return new RecordDumperMock(configFilePath);
 		if (recordDumperName.equalsIgnoreCase(RecordDumperInterface.csvRecordDumperName))
-			return new RecordDumperMock(configFilePath);		
+			return new RecordDumperCSV(configFilePath);		
 		throw new RecordDumpException("Couldn't build the given recordDumper: " + recordDumperName);
 	}
 

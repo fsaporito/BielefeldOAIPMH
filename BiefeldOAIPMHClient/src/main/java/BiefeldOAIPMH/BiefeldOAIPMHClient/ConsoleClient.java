@@ -29,11 +29,11 @@ public class ConsoleClient
 			this.logger = this.config.getLogger();
 			
 			RecordGetterInterface getter = RecordGetterFactory.buildRecordGetter(this.config.getGetterType(),
-					ConsoleClientConfig.configFolder + "\\" + this.config.getGetterPropsFileName());
+					ConsoleClientConfig.configFolder + "//" + this.config.getGetterPropsFileName());
 			getter.setLogger(this.config.getGetterLoggerName());
 			
 			RecordDumperInterface dumper = RecordDumperFactory.buildRecordDumper(this.config.getDumperType(),
-					ConsoleClientConfig.configFolder + "\\" + this.config.getDumperPropsFileName());
+					ConsoleClientConfig.configFolder + "//" + this.config.getDumperPropsFileName());
 			dumper.setLogger(this.config.getDumperLoggerName());
 			
 			this.backendConnector = new BackendConnector<> (getter, dumper, this.config.getBackendConnectorLoggerName());
