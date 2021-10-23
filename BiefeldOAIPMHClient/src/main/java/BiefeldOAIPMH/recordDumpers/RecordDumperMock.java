@@ -38,7 +38,7 @@ public class RecordDumperMock implements RecordDumperInterface
 		final String methodName = "::dump() ";
 		var dumpStr = RecordDumperInterface.dumpOperationToStr(dumpName, data);
 		String dataStr = "\n"; 
-		if (data.isEmpty())
+		if (!data.isEmpty())
 		{
 			dataStr += data.entrySet()
 					.stream()
