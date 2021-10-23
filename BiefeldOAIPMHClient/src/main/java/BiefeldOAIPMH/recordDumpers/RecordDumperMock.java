@@ -6,12 +6,12 @@ import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 
 
-public class RecordDumperMock implements RecordDumperInterface 
+public class RecordDumperMock implements RecordDumperInterface
 {
 
 	public org.apache.logging.log4j.Logger logger = LogManager.getRootLogger();
 	
-	public RecordDumperMock() 
+	public RecordDumperMock(String configFilePath)
 	{
 	}
 

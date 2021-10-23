@@ -5,7 +5,7 @@ public class RecordGetterFactory {
 	public RecordGetterFactory() 
 	{}
 	
-	public static RecordGetterInterface buildRecordGetter(String recordGetterName) 
+	public static RecordGetterInterface buildRecordGetter(String recordGetterName, String configFilePath) 
 			throws RecordGetterException
 	{
 		if (recordGetterName == null)
@@ -13,7 +13,7 @@ public class RecordGetterFactory {
 		if (recordGetterName.isBlank())
 			throw new RecordGetterException("Received RecordGetter Name is blanck");
 		if (recordGetterName.equalsIgnoreCase(RecordGetterInterface.mockRecordGetterName))
-			return new RecordGetterMock();
+			return new RecordGetterMock(configFilePath);
 		throw new RecordGetterException("Couldn't build the given recordGetter: " + recordGetterName);
 	}
 

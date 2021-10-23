@@ -1,6 +1,7 @@
 package BiefeldOAIPMH.recordGetters;
 
 import java.util.HashMap;
+import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 
@@ -8,7 +9,7 @@ public class RecordGetterMock implements RecordGetterInterface {
 
 	public org.apache.logging.log4j.Logger logger = LogManager.getRootLogger();
 	
-	public RecordGetterMock() 
+	public RecordGetterMock(String configFilePath) 
 	{
 	}
 	

@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LoggerContext;
 
+
 public class ConsoleClientConfig {
 
 	protected static final String configFolder = "conf";
@@ -28,11 +29,15 @@ public class ConsoleClientConfig {
 	protected String getterType;
 	protected static final String propKeyGetterLoggerName = "getterLoggerName";
 	protected String getterLoggerName;
+	protected static final String propKeyGetterPropsFile = "getterPropsFileName";
+	protected String getterPropsFileName;
 	
 	protected static final String propKeyDumperType = "dumperType";
 	protected String dumperType;
 	protected static final String propKeyDumperLoggerName = "dumperLoggerName";
 	protected String dumperLoggerName;
+	protected static final String propKeyDumperPropsFile = "dumperPropsFileName";
+	protected String dumperPropsFileName;
 	
 	protected org.apache.logging.log4j.Logger logger = LogManager.getRootLogger();
 	
@@ -59,10 +64,12 @@ public class ConsoleClientConfig {
 			// Record Getter
 			this.getterType = readFromProp(prop, propKeyGetterType, configFilePath);
 			this.getterLoggerName = readFromProp(prop, propKeyGetterLoggerName, configFilePath);
+			this.getterPropsFileName = readFromProp(prop, propKeyGetterPropsFile, configFilePath);
 			
 			// Record Dumper
 			this.dumperType = readFromProp(prop, propKeyDumperType, configFilePath);
 			this.dumperLoggerName = readFromProp(prop, propKeyDumperLoggerName, configFilePath);
+			this.dumperPropsFileName = readFromProp(prop, propKeyDumperPropsFile, configFilePath);
 			
 			this.logger.info(methodName + " ConsoleClient ConfigObject initialized from " + configFilePath);
 			this.logger.trace(methodName + "Read Properties: \n" + this.toString());
@@ -71,6 +78,14 @@ public class ConsoleClientConfig {
 			logger.fatal(methodName + "Couldn't load configuration file " + configFilePath);
 			throw e;
 		}
+	}
+
+	public String getGetterPropsFileName() {
+		return getterPropsFileName;
+	}
+
+	public String getDumperPropsFileName() {
+		return dumperPropsFileName;
 	}
 
 	public String getClientLoggerName() {
@@ -128,8 +143,10 @@ public class ConsoleClientConfig {
 		   + "\n    - backendConnectorLoggerName=" + this.backendConnectorLoggerName
 		   + "\n    - getterType=" + this.getterType
 		   + "\n    - getterLoggerName=" + this.getterLoggerName
+		   + "\n    - getterPropsFileName=" + this.getterPropsFileName
 		   + "\n    - dumperType=" + this.dumperType
-		   + "\n    - dumperLoggerName=" + this.dumperLoggerName;
+		   + "\n    - dumperLoggerName=" + this.dumperLoggerName
+		   + "\n    - dumperPropsFileName=" + this.dumperPropsFileName;
 	}
 	
 	
