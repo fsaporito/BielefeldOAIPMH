@@ -44,9 +44,9 @@ public class BackendConnector<RecordGetter extends RecordGetterInterface,
 		this.logger = LogManager.getLogger(loggerName);
 	}
 	
-	public void getNumberOfPublicationsPerYear()
+	public void getNumberOfRecordsPerPublicationYear()
 	{
-		final String opName = RecordGetterInterface.OP_NumberOfPublicationsPerYear;
+		final String opName = RecordGetterInterface.OP_NumberOfRecordsPerPublicationYear;
 		try {
 			HashMap<String, String> data = getter.ask(opName, null);
 			dumper.dump(opName, data);
@@ -79,8 +79,8 @@ public class BackendConnector<RecordGetter extends RecordGetterInterface,
 	{
 		final String opName = RecordGetterInterface.OP_NumberOfJournalArticlesSinceYearGroupedByYearRange;
 		HashMap<String, String> parameters = new HashMap<String, String>();
-		parameters.put("StartYear", Integer.toString(startYear));
-		parameters.put("YearRange", Integer.toString(yearRange));
+		parameters.put("startYear", Integer.toString(startYear));
+		parameters.put("yearRange", Integer.toString(yearRange));
 		try
 		{
 			HashMap<String, String> data = getter.ask(opName, parameters);
@@ -96,7 +96,7 @@ public class BackendConnector<RecordGetter extends RecordGetterInterface,
 	
 	public void numberOfRecordsPerAuthor()
 	{
-		final String opName = RecordGetterInterface.OP_NumberOfPublicationsPerYear;
+		final String opName = RecordGetterInterface.OP_NumberOfRecordsPerAuthor;
 		try
 		{
 			HashMap<String, String> data = getter.ask(opName, null);
@@ -112,7 +112,7 @@ public class BackendConnector<RecordGetter extends RecordGetterInterface,
 	
 	public void numberOfRecordsPerORCIDAuthor()
 	{
-		final String opName = RecordGetterInterface.OP_NumberOfPublicationsPerYear;
+		final String opName = RecordGetterInterface.OP_NumberOfRecordsPerORCIDAuthor;
 		try
 		{
 			HashMap<String, String> data = getter.ask(opName, null);

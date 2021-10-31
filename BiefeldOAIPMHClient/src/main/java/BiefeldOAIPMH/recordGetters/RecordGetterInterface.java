@@ -8,10 +8,13 @@ public interface RecordGetterInterface
 	
 	public static final String genericRecordGetterName = "RecordGetter";
 	public static final String mockRecordGetterName = "Mock";
+	public static final String restRecordGetterName = "Rest";
 	
-	final static String OP_NumberOfPublicationsPerYear = "NumberOfPublicationsPerYear";
+	final static String OP_NumberOfRecordsPerAuthor = "numberOfRecordsPerAuthor";
+	final static String OP_NumberOfRecordsPerORCIDAuthor = "numberOfRecordsPerOrcidAuthor";
+	final static String OP_NumberOfRecordsPerPublicationYear = "numberOfRecordsPerPublicationYear";
 	final static String OP_NumberOfRecordsPerTypology = "NumberOfRecordsPerTypology";
-	final static String OP_NumberOfJournalArticlesSinceYearGroupedByYearRange = "NumberOfJournalArticlesSinceYearGroupedByYearRange";
+	final static String OP_NumberOfJournalArticlesSinceYearGroupedByYearRange = "numberOfJournalRecordsSinceYearGrouperByYear";
 	
 	public void setLogger(String loggerName);
 	

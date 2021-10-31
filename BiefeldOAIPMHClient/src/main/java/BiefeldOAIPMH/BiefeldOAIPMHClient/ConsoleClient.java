@@ -55,8 +55,8 @@ public class ConsoleClient
 	{
 		final String methodName = "::execute(): ";
 		
-		this.logger.info(methodName + "Get Number of Publications per Year");
-		this.backendConnector.getNumberOfPublicationsPerYear();
+		this.logger.info(methodName + "Get Number Records per Publications Year");
+		this.backendConnector.getNumberOfRecordsPerPublicationYear();
 		
 		this.logger.info(methodName + "Get Number of Records per Typology");
 		this.backendConnector.getNumberOfRecordsPerTypology();

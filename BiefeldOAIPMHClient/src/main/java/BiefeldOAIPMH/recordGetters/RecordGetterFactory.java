@@ -14,6 +14,8 @@ public class RecordGetterFactory {
 			throw new RecordGetterException("Received RecordGetter Name is blanck");
 		if (recordGetterName.equalsIgnoreCase(RecordGetterInterface.mockRecordGetterName))
 			return new RecordGetterMock(configFilePath);
+		if (recordGetterName.equalsIgnoreCase(RecordGetterInterface.restRecordGetterName))
+			return new RecordGetterRest(configFilePath);
 		throw new RecordGetterException("Couldn't build the given recordGetter: " + recordGetterName);
 	}
 
