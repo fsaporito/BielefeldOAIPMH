@@ -12,8 +12,8 @@ public class NumberOfRecordsPerOrcidAuthor
 	{
 		this.id = id;
 		this.data = new HashMap<>();
-		this.data.put("KEY1", "VALUE1");
-		this.data.put("KEY2", "VALUE2");
+		this.data.put("NumberOfRecordsPerOrcidAuthor_KEY1", "VALUE1");
+		this.data.put("NumberOfRecordsPerOrcidAuthor_KEY2", "VALUE2");
 	}
 
 	public long getId()

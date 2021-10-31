@@ -12,8 +12,8 @@ public class NumberOfRecordsPerTypology
 	{
 		this.id = id;
 		this.data = new HashMap<>();
-		this.data.put("KEY1", "VALUE1");
-		this.data.put("KEY2", "VALUE2");
+		this.data.put("NumberOfRecordsPerTypology_KEY1", "VALUE1");
+		this.data.put("NumberOfRecordsPerTypology_KEY2", "VALUE2");
 	}
 
 	public long getId()

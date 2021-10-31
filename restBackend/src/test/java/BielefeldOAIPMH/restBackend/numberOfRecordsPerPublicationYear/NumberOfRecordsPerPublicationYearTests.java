@@ -9,40 +9,19 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import BielefeldOAIPMH.restBackend.numberOfRecordsPerPublicationYear.NumberOfRecordsPerPublicationYearController;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(NumberOfRecordsPerPublicationYearController.class)
-class NumberOfRecordsPerPublicationYearTests 
+class NumberOfRecordsPerPublicationYearTests
 {
 	 @Autowired
 	 private MockMvc mockMvc;
 
+	
 	@Test
-	void numberOfRecordsPerPublicationYearNoParameters() throws Exception
+	void numberOfRecordsPerPublicationYearTestsLoad() throws Exception
 	{
 		this.mockMvc.perform(MockMvcRequestBuilders.get("/numberOfRecordsPerPublicationYear"))
-        .andExpect(MockMvcResultMatchers.status().is4xxClientError());
-	}    
-	
-	@Test
-	void numberOfRecordsPerPublicationYearNoYearRange() throws Exception
-	{
-		this.mockMvc.perform(MockMvcRequestBuilders.get("/numberOfRecordsPerPublicationYear?startYear=1985"))
-        .andExpect(MockMvcResultMatchers.status().is4xxClientError());
-	} 
-	
-	@Test
-	void numberOfRecordsPerPublicationYearNoStartYEar() throws Exception
-	{
-		this.mockMvc.perform(MockMvcRequestBuilders.get("/numberOfRecordsPerPublicationYear?yearRange=5"))
-        .andExpect(MockMvcResultMatchers.status().is4xxClientError());
-	} 
-	
-	@Test
-	void numberOfRecordsPerPublicationYearLoad() throws Exception
-	{
-		this.mockMvc.perform(MockMvcRequestBuilders.get("/numberOfRecordsPerPublicationYear?startYear=1985&yearRange=5"))
         .andExpect(MockMvcResultMatchers.status().isOk());
 	}   
 
