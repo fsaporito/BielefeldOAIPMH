@@ -60,7 +60,7 @@ public class RecordDumperCSV implements RecordDumperInterface {
 		final String methodName = "::dump() ";
 		var dumpStr = RecordDumperInterface.dumpOperationToStr(dumpName, data);
 		this.logger.info(methodName + dumpStr);
-		File csvOutputFile = new File(this.csvOutputPath);
+		File csvOutputFile = new File(this.csvOutputPath + "/" + dumpName + ".csv");
 	    try (PrintWriter printWriter = new PrintWriter(csvOutputFile))
 	    {
 			data.entrySet()
