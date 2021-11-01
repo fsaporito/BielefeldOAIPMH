@@ -13,7 +13,7 @@ public interface RecordGetterInterface
 	final static String OP_NumberOfRecordsPerAuthor = "numberOfRecordsPerAuthor";
 	final static String OP_NumberOfRecordsPerORCIDAuthor = "numberOfRecordsPerOrcidAuthor";
 	final static String OP_NumberOfRecordsPerPublicationYear = "numberOfRecordsPerPublicationYear";
-	final static String OP_NumberOfRecordsPerTypology = "NumberOfRecordsPerTypology";
+	final static String OP_NumberOfRecordsPerTypology = "numberOfRecordsPerTypology";
 	final static String OP_NumberOfJournalArticlesSinceYearGroupedByYearRange = "numberOfJournalRecordsSinceYearGrouperByYear";
 	
 	public void setLogger(String loggerName);

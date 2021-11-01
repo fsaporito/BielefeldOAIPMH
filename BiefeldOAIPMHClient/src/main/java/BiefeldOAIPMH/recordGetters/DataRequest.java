@@ -2,10 +2,17 @@ package BiefeldOAIPMH.recordGetters;
 
 import java.util.HashMap;
 
+
 public class DataRequest {
 
 	protected long id;
 	protected HashMap<String, String> data;
+	
+	public DataRequest() 
+	{
+		this.id = 1;
+		this.data = new HashMap<String, String>();
+	}
 	
 	public DataRequest(long id, HashMap<String, String> data) 
 	{

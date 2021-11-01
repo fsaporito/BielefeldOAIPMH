@@ -8,6 +8,7 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.apache.logging.log4j.LogManager;
 
@@ -66,8 +67,9 @@ public class RecordGetterRest implements RecordGetterInterface {
 		this.logger.info(methodName + askStr);
 		
 		// Setup Request
-		Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(this.restBackendAddress);
+		Client client = ClientBuilder.newBuilder().build();
+        WebTarget target = client.target(this.restBackendAddress + "/" + actionName);
+        
         if (parametersMap != null)
         {
         	for (var entries = parametersMap.entrySet().iterator(); entries.hasNext(); ) 
@@ -77,9 +79,35 @@ public class RecordGetterRest implements RecordGetterInterface {
 	        }
         }
 
-        // Do Request
-		DataRequest dataReq = target.request(MediaType.APPLICATION_JSON).get(DataRequest.class);
-		return dataReq.getData();
+        // Get Response
+		Response response = target.request(MediaType.APPLICATION_JSON).get();
+		
+		// Parse into the wanted data type
+		HashMap<String, String> data = new HashMap<>();
+		
+		try 
+		{
+		   if (response.getStatus() == 200) {
+		      response.bufferEntity();
+		      DataRequest dataReq = response.readEntity(DataRequest.class);
+		      data = dataReq.getData();
+		   }
+		   else
+		   {
+			   throw new RecordAskException("Bad request: Http Error Code " + response.getStatus());
+		   }
+		}
+		catch (Exception e)
+		{
+			response.close();
+			throw new RecordAskException(e.getMessage());
+		} finally {
+		  response.close();
+		}
+			
+		// Return
+		return data;
+		
 	}
 	
 }
