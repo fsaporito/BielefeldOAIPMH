@@ -11,7 +11,7 @@ public class NumberOfRecordsPerTypologyController {
 	private final AtomicLong counter = new AtomicLong();
 	
 	public NumberOfRecordsPerTypologyController() 
-	{}		
+	{}
 		
 	@GetMapping("/numberOfRecordsPerTypology")
 	public NumberOfRecordsPerTypology greetings()
