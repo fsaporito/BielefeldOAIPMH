@@ -40,6 +40,11 @@ The rest backend offers the following APIs
 * **Number of Records per Typology**: http://localhost:8080/numberOfRecordsPerTypology
 * **Number of Records of Type Journal since** *startYear* **divided in range of** *yearRange* **years**: http://localhost:8080/numberOfJournalRecordsSinceYearGrouperByYear?startYear=1985&yearRange=5
 
+Furthermore, to see directly the underline H2 DB, there is a specific rest API at the following location
+
+http://localhost:8080/h2
+
+This has to be accessed by using the userID and Password specified in the *application.properties* file of the rest backend project.
 
 ## Console Client
 
