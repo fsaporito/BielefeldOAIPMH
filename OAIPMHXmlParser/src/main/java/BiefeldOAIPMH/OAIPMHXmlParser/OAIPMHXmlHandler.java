@@ -16,35 +16,31 @@ public class OAIPMHXmlHandler {
 	public OAIPMHXmlHandler() 
 	{}
 	
-	public static ArrayList<RecordType> parse(Boolean getAllData)
+	public static ArrayList<RecordType> parse(Boolean getAllData) 
+			throws MalformedURLException, JAXBException
 	{
 		ArrayList<RecordType> recordsList = new ArrayList<RecordType>();
 		
 		String resumptionTokenValue = "";
-    	try
-    	{
-    		do
+    	do
+		{
+    		String currentUrl = urlStr;
+    		if (!resumptionTokenValue.isEmpty())
     		{
-	    		String currentUrl = urlStr;
-	    		if (!resumptionTokenValue.isEmpty())
-	    		{
-	    			currentUrl += resuptionTokenParameterName + resumptionTokenValue;
-	    		}
-	    		else
-	    		{
-	    			currentUrl += "&metadataPrefix=oai_datacite";
-	    		}
-	    		OAIPMHtype res = Parser.parseFromUrl(currentUrl);
-	    		ListRecordsType recordType = res.getListRecords();
-	    		var resumptionToken = recordType.getResumptionToken();
-	    		resumptionTokenValue = resumptionToken.getValue();
-	    		ArrayList<RecordType> batchRecordList = (ArrayList<RecordType>) recordType.getRecord();
-	    		recordsList.addAll(batchRecordList);
-    		} while (getAllData && !resumptionTokenValue.isEmpty());
-		} catch (MalformedURLException | JAXBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    			currentUrl += resuptionTokenParameterName + resumptionTokenValue;
+    		}
+    		else
+    		{
+    			currentUrl += "&metadataPrefix=oai_datacite";
+    		}
+    		OAIPMHtype res = Parser.parseFromUrl(currentUrl);
+    		ListRecordsType recordType = res.getListRecords();
+    		var resumptionToken = recordType.getResumptionToken();
+    		resumptionTokenValue = resumptionToken.getValue();
+    		ArrayList<RecordType> batchRecordList = (ArrayList<RecordType>) recordType.getRecord();
+    		recordsList.addAll(batchRecordList);
+		} while (getAllData && !resumptionTokenValue.isEmpty());
+	
 		return recordsList;
 	}
 
