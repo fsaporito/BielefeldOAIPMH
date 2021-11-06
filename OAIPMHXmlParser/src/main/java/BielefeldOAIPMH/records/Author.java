@@ -48,6 +48,10 @@ public class Author {
 		ORCID = oRCID;
 	}
 
+	public String getCompleteName() {
+		return getAuthorFamilyName() + ", " + getAuthorGivenName();
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
