@@ -7,13 +7,15 @@ import javax.xml.bind.JAXBException;
 
 import org.openarchives.oai._2.RecordType;
 
+import BielefeldOAIPMH.records.TaskRecord;
+
 public class OAIPMHXmlParserMain 
 {
     public static void main( String[] args )
     {
-    	ArrayList<RecordType> recordsList = new ArrayList<>();
+    	ArrayList<TaskRecord> recordsList = new ArrayList<>();
 		try {
-			recordsList = OAIPMHXmlHandler.parse(true);
+			recordsList = OAIPMHXmlHandler.parse(false);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (JAXBException e) {

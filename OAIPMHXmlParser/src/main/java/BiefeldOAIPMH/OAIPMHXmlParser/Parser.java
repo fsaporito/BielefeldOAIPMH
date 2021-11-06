@@ -9,6 +9,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.datacite.schema.kernel_4.Resource;
 import org.openarchives.oai._2.OAIPMHtype;
 
 public class Parser {
@@ -18,12 +19,13 @@ public class Parser {
 	
 	protected static Unmarshaller buildOAIPMUnmarshaller() throws JAXBException
 	{
-		JAXBContext jaxbContext = JAXBContext.newInstance(OAIPMHtype.class);
+		JAXBContext jaxbContext = JAXBContext.newInstance(OAIPMHtype.class, 
+															Resource.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		return jaxbUnmarshaller;
 	}
 	
-	public static OAIPMHtype parseFromFile(String xmlFilePath) 
+	public static OAIPMHtype parseOAIPMHFromFile(String xmlFilePath) 
 			throws JAXBException
 	{
 		File file = new File(xmlFilePath);
@@ -32,7 +34,7 @@ public class Parser {
 		return element;
 	}
 	
-	public static OAIPMHtype parseFromUrl(String urlStr) 
+	public static OAIPMHtype parseOAIPMHFromUrl(String urlStr) 
 			throws JAXBException, MalformedURLException
 	{
 		URL url = new URL(urlStr);
@@ -42,5 +44,6 @@ public class Parser {
 		JAXBElement<OAIPMHtype> element = (JAXBElement<OAIPMHtype>) urlUnmarshalled;
 		return element.getValue();
 	}
+	
 
 }
