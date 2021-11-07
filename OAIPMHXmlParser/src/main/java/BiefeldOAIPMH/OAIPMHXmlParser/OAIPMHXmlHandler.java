@@ -67,7 +67,9 @@ public class OAIPMHXmlHandler {
 					String creatorName = creator.getCreatorName().getValue();
 					var creatorNameSplit = creatorName.split(", ");
 					String familyName = creatorNameSplit[0];
-					String givenName = creatorNameSplit[1];
+					String givenName = "";
+					if (creatorNameSplit.length > 1)
+						givenName = creatorNameSplit[1];
 					String ORCID = null;
 					var nameIdentifierList = creator.getNameIdentifier();
 					for (var nameIdentifier: nameIdentifierList)
