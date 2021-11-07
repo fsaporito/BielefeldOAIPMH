@@ -4,7 +4,7 @@ INSERT INTO RecordsXAuthor (authorName, recordNum) VALUES
   ('McDuck, Scrudge', 5);
 
 
-INSERT INTO RecordsXORCIDAuthor (authorName, recordNum) VALUES
+INSERT INTO RecordsXORCIDAuthor (authorORCID, recordNum) VALUES
   ('00000', 10),
   ('00001', 11),
   ('00002', 5);
