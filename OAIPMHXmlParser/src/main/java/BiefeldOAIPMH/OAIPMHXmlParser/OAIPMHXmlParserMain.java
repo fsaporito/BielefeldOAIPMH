@@ -15,7 +15,7 @@ public class OAIPMHXmlParserMain
     {
     	ArrayList<TaskRecord> recordsList = new ArrayList<>();
 		try {
-			recordsList = OAIPMHXmlHandler.parse(false);
+			recordsList = OAIPMHXmlHandler.parse(true);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (JAXBException e) {

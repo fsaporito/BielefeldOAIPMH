@@ -63,8 +63,6 @@ public class TaskRecord {
 	public void setAuthors(ArrayList<Author> authors) {
 		if (authors == null)
 			throw new IllegalArgumentException("Authors list cannot be null");
-		if (authors.isEmpty())
-			throw new IllegalArgumentException("Authors list cannot be empty");
 		this.authors = authors;
 	}
 	
