@@ -1,16 +1,16 @@
-INSERT INTO RECORDS_X_AUTHOR (authorName, recordNum) VALUES
+INSERT INTO RecordsXAuthor (authorName, recordNum) VALUES
   ('Duck, Donald', 10),
   ('Duck, Daisy', 11),
   ('McDuck, Scrudge', 5);
 
 
-INSERT INTO RECORDS_X_ORCID_AUTHOR (authorName, recordNum) VALUES
+INSERT INTO RecordsXORCIDAuthor (authorName, recordNum) VALUES
   ('00000', 10),
   ('00001', 11),
   ('00002', 5);
 
 
-INSERT INTO RECORDS_X_PUBLICATION_YEAR (publicationYear, recordNum) VALUES
+INSERT INTO RecordsXPublicationYear (publicationYear, recordNum) VALUES
   (2009, 10),
   (2010, 11),
   (2011, 10),
@@ -26,13 +26,13 @@ INSERT INTO RECORDS_X_PUBLICATION_YEAR (publicationYear, recordNum) VALUES
   (2021, 10);
 
 
-INSERT INTO RECORDS_X_TYPOLOGY (typology, recordNum) VALUES
+INSERT INTO RecordsXTypology (typology, recordNum) VALUES
   ('JOURNAL', 10),
   ('THESIS', 11),
   ('CONFERENCE', 5);
 
 
-INSERT INTO RECORDS_JOURNALS_X_PUBLICATION_YEAR (publicationYear, recordNum) VALUES
+INSERT INTO RecordsJournalsXPublicationYear (publicationYear, recordNum) VALUES
   (2009, 10),
   (2010, 11),
   (2011, 10),
