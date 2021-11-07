@@ -12,7 +12,7 @@ public class RecordsXTypology {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	protected String authorName;
+	protected String typology;
 	
 	protected int recordNum;
 	
@@ -20,9 +20,9 @@ public class RecordsXTypology {
 		// TODO Auto-generated constructor stub
 	}
 
-	public RecordsXTypology(String authorName, int recordNum) {
+	public RecordsXTypology(String typology, int recordNum) {
 		super();
-		this.authorName = authorName;
+		this.typology = typology;
 		this.recordNum = recordNum;
 	}
 
@@ -34,12 +34,12 @@ public class RecordsXTypology {
 		this.id = id;
 	}
 
-	public String getAuthorName() {
-		return authorName;
+	public String getTypology() {
+		return typology;
 	}
 
-	public void setAuthorName(String authorName) {
-		this.authorName = authorName;
+	public void setTypology(String typology) {
+		this.typology = typology;
 	}
 
 	public int getRecordNum() {
@@ -54,7 +54,7 @@ public class RecordsXTypology {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((authorName == null) ? 0 : authorName.hashCode());
+		result = prime * result + ((typology == null) ? 0 : typology.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + recordNum;
 		return result;
@@ -69,10 +69,10 @@ public class RecordsXTypology {
 		if (getClass() != obj.getClass())
 			return false;
 		RecordsXTypology other = (RecordsXTypology) obj;
-		if (authorName == null) {
-			if (other.authorName != null)
+		if (typology == null) {
+			if (other.typology != null)
 				return false;
-		} else if (!authorName.equals(other.authorName))
+		} else if (!typology.equals(other.typology))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -86,7 +86,7 @@ public class RecordsXTypology {
 
 	@Override
 	public String toString() {
-		return "RecordsXTypology [id=" + id + ", authorName=" + authorName + ", recordNum=" + recordNum + "]";
+		return "RecordsXTypology [id=" + id + ", typology=" + typology + ", recordNum=" + recordNum + "]";
 	}
 	
 	
