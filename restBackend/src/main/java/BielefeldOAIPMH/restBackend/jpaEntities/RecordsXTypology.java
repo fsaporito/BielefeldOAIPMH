@@ -1,4 +1,4 @@
-package BielefeldOAIPMH.jpaEntities;
+package BielefeldOAIPMH.restBackend.jpaEntities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,25 +6,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class RecordsXORCIDAuthor {
+public class RecordsXTypology {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	protected String authorORCID;
+	protected String authorName;
 	
 	protected int recordNum;
-
-	public RecordsXORCIDAuthor() {
+	
+	public RecordsXTypology() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public RecordsXORCIDAuthor(String authorORCID, int recordNum) {
+	public RecordsXTypology(String authorName, int recordNum) {
 		super();
-		this.authorORCID = authorORCID;
+		this.authorName = authorName;
 		this.recordNum = recordNum;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -33,12 +34,12 @@ public class RecordsXORCIDAuthor {
 		this.id = id;
 	}
 
-	public String getAuthorORCID() {
-		return authorORCID;
+	public String getAuthorName() {
+		return authorName;
 	}
 
-	public void setAuthorORCID(String authorORCID) {
-		this.authorORCID = authorORCID;
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 
 	public int getRecordNum() {
@@ -53,7 +54,7 @@ public class RecordsXORCIDAuthor {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((authorORCID == null) ? 0 : authorORCID.hashCode());
+		result = prime * result + ((authorName == null) ? 0 : authorName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + recordNum;
 		return result;
@@ -67,11 +68,11 @@ public class RecordsXORCIDAuthor {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		RecordsXORCIDAuthor other = (RecordsXORCIDAuthor) obj;
-		if (authorORCID == null) {
-			if (other.authorORCID != null)
+		RecordsXTypology other = (RecordsXTypology) obj;
+		if (authorName == null) {
+			if (other.authorName != null)
 				return false;
-		} else if (!authorORCID.equals(other.authorORCID))
+		} else if (!authorName.equals(other.authorName))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -85,7 +86,7 @@ public class RecordsXORCIDAuthor {
 
 	@Override
 	public String toString() {
-		return "RecordsXORCIDAuthor [id=" + id + ", authorORCID=" + authorORCID + ", recordNum=" + recordNum + "]";
+		return "RecordsXTypology [id=" + id + ", authorName=" + authorName + ", recordNum=" + recordNum + "]";
 	}
 	
 	

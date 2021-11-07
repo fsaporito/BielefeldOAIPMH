@@ -1,4 +1,4 @@
-package BielefeldOAIPMH.jpaEntities;
+package BielefeldOAIPMH.restBackend.jpaEntities;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

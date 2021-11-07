@@ -1,4 +1,4 @@
-package BielefeldOAIPMH.jpaEntities;
+package BielefeldOAIPMH.restBackend.jpaEntities;
 
 import org.springframework.data.repository.CrudRepository;
 
