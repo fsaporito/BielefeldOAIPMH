@@ -13,17 +13,14 @@ This projects contains the functionalities for doing the following analytics ope
 Installation
 ------------
 
-Automatic Tests
-------------
+# Xml Parser
+The Rest Controller depends on the XML parser library that implements classes for downloading and parsing the OAI-PMH data.
+To build and install this library, run the following commands from terminal starting from the root directory of the project
+    cd OAIPMHXmlParser
+    mvn package
+    mvn install
 
 ## Rest Controller
-For launching tests on the Rest Controller, run the following commands from terminal starting from the root directory of the project
-    cd restBackend
-    ./mvnw test
-    
-
-Loading the backend
-------------
 The backend can be communicated with using the given rest interface.
 To start the backend server, run the following commands from terminal starting from the root directory of the project
     cd restBackend
