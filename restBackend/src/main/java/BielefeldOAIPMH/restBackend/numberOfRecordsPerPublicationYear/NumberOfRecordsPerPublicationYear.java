@@ -8,12 +8,13 @@ public class NumberOfRecordsPerPublicationYear
 	private long id;
 	private HashMap<String, String> data;
 		
-	public NumberOfRecordsPerPublicationYear(long id) 
+	public NumberOfRecordsPerPublicationYear(long id, HashMap<String, String> data) 
 	{
 		this.id = id;
 		this.data = new HashMap<>();
-		this.data.put("NumberOfRecordsPerPublicationYear_KEY1", "VALUE1");
-		this.data.put("NumberOfRecordsPerPublicationYear_KEY2", "VALUE2");
+		if (data == null)
+			throw new IllegalArgumentException("Received Data was null");
+		this.data.putAll(data);
 	}
 
 	public long getId()

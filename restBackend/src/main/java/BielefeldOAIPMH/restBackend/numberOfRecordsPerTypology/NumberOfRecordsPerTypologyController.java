@@ -1,5 +1,6 @@
 package BielefeldOAIPMH.restBackend.numberOfRecordsPerTypology;
 
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +15,12 @@ public class NumberOfRecordsPerTypologyController {
 	{}
 		
 	@GetMapping("/numberOfRecordsPerTypology")
-	public NumberOfRecordsPerTypology greetings()
+	public NumberOfRecordsPerTypology numberOfRecordsPerTypology()
 	{
-		return new NumberOfRecordsPerTypology(counter.incrementAndGet());
+		HashMap<String, String> data = new HashMap<>();
+		data.put("NumberOfRecordsPerTypology_KEY1", "VALUE1");
+		data.put("NumberOfRecordsPerTypology_KEY2", "VALUE2");
+		return new NumberOfRecordsPerTypology(counter.incrementAndGet(), data);
 	}
 	
 }

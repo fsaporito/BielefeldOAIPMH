@@ -10,14 +10,15 @@ public class NumberOfJournalArticlesSinceYearGroupedByYear
 	private long yearRange;
 	private HashMap<String, String> data;
 		
-	public NumberOfJournalArticlesSinceYearGroupedByYear(long id, int startYear, int yearRange) 
+	public NumberOfJournalArticlesSinceYearGroupedByYear(long id, int startYear, int yearRange, HashMap<String, String> data) 
 	{
 		this.id = id;
 		this.data = new HashMap<>();
 		this.startYear = startYear;
 		this.yearRange = yearRange;
-		this.data.put("NumberOfJournalArticlesSinceYearGroupedByYear_KEY1", "VALUE1");
-		this.data.put("NumberOfJournalArticlesSinceYearGroupedByYear_KEY2", "VALUE2");
+		if (data == null)
+			throw new IllegalArgumentException("Received Data was null");
+		this.data.putAll(data);
 	}
 
 	public long getId()

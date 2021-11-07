@@ -1,5 +1,6 @@
 package BielefeldOAIPMH.restBackend.numberOfRecordsPerPublicationYear;
 
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +15,12 @@ public class NumberOfRecordsPerPublicationYearController {
 	{}		
 		
 	@GetMapping("/numberOfRecordsPerPublicationYear")
-	public NumberOfRecordsPerPublicationYear greetings()
+	public NumberOfRecordsPerPublicationYear numberOfRecordsPerPublicationYear()
 	{
-		return new NumberOfRecordsPerPublicationYear(counter.incrementAndGet());
+		HashMap<String, String> data = new HashMap<>();
+		data.put("NumberOfRecordsPerPublicationYear_KEY1", "VALUE1");
+		data.put("NumberOfRecordsPerPublicationYear_KEY2", "VALUE2");
+		return new NumberOfRecordsPerPublicationYear(counter.incrementAndGet(), data);
 	}
 	
 }

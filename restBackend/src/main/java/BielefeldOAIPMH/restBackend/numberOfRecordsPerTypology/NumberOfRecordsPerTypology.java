@@ -8,12 +8,13 @@ public class NumberOfRecordsPerTypology
 	private long id;
 	private HashMap<String, String> data;
 		
-	public NumberOfRecordsPerTypology(long id) 
+	public NumberOfRecordsPerTypology(long id, HashMap<String, String> data) 
 	{
 		this.id = id;
 		this.data = new HashMap<>();
-		this.data.put("NumberOfRecordsPerTypology_KEY1", "VALUE1");
-		this.data.put("NumberOfRecordsPerTypology_KEY2", "VALUE2");
+		if (data == null)
+			throw new IllegalArgumentException("Received Data was null");
+		this.data.putAll(data);
 	}
 
 	public long getId()

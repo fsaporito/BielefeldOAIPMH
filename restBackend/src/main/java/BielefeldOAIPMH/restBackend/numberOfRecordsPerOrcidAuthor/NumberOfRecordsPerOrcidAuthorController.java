@@ -1,5 +1,6 @@
 package BielefeldOAIPMH.restBackend.numberOfRecordsPerOrcidAuthor;
 
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +15,12 @@ public class NumberOfRecordsPerOrcidAuthorController {
 	{}		
 		
 	@GetMapping("/numberOfRecordsPerOrcidAuthor")
-	public NumberOfRecordsPerOrcidAuthor greetings()
+	public NumberOfRecordsPerOrcidAuthor numberOfRecordsPerOrcidAuthor()
 	{
-		return new NumberOfRecordsPerOrcidAuthor(counter.incrementAndGet());
+		HashMap<String, String> data = new HashMap<>();
+		data.put("NumberOfRecordsPerOrcidAuthor_KEY1", "VALUE1");
+		data.put("NumberOfRecordsPerOrcidAuthor_KEY2", "VALUE2");
+		return new NumberOfRecordsPerOrcidAuthor(counter.incrementAndGet(), data);
 	}
 	
 }

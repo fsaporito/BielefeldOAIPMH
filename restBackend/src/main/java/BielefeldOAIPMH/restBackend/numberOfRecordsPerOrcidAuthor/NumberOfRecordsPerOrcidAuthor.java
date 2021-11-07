@@ -8,12 +8,13 @@ public class NumberOfRecordsPerOrcidAuthor
 	private long id;
 	private HashMap<String, String> data;
 		
-	public NumberOfRecordsPerOrcidAuthor(long id) 
+	public NumberOfRecordsPerOrcidAuthor(long id, HashMap<String, String> data) 
 	{
 		this.id = id;
 		this.data = new HashMap<>();
-		this.data.put("NumberOfRecordsPerOrcidAuthor_KEY1", "VALUE1");
-		this.data.put("NumberOfRecordsPerOrcidAuthor_KEY2", "VALUE2");
+		if (data == null)
+			throw new IllegalArgumentException("Received Data was null");
+		this.data.putAll(data);
 	}
 
 	public long getId()
