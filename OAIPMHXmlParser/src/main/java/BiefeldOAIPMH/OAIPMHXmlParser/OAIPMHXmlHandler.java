@@ -52,12 +52,9 @@ public class OAIPMHXmlHandler {
 			var header = recordXML.getHeader();
 			var metadata = recordXML.getMetadata();
 			String recordID = header.getIdentifier();	
-			String recordTypology = "Unknown";
-			var spec = header.getSetSpec();
-			if (spec.size() >= 2)
-				recordTypology = header.getSetSpec().get(1);
 			ArrayList<Author> authors = new ArrayList<>();
 			var resource = (Resource) metadata.getAny();
+			String recordTypology = resource.getResourceType().getValue();
 			int publicationYear = Integer.parseInt(resource.getPublicationYear());
 			var creators = resource.getCreators();
 			if (creators != null)
