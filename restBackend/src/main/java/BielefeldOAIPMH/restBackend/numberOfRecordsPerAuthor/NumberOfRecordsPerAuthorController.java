@@ -17,7 +17,7 @@ public class NumberOfRecordsPerAuthorController {
 	@Autowired
 	private RecordsXAuthorRepository recordsXAuthorRepository;
 	
-	public NumberOfRecordsPerAuthorController() 
+	public NumberOfRecordsPerAuthorController()
 	{}		
 		
 	@GetMapping("/numberOfRecordsPerAuthor")
