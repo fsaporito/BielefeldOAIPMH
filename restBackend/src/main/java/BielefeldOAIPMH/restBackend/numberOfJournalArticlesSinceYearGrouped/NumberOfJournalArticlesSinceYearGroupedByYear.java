@@ -45,7 +45,7 @@ public class NumberOfJournalArticlesSinceYearGroupedByYear
 		int rangeNum = (int) (diff / this.yearRange);
 		int rangeStartYear = (int) (this.startYear + this.yearRange * rangeNum);
 		int rangeEndYear = (int) (this.yearRange - 1);
-		return Integer.toString(rangeStartYear) + " - " + Integer.toString(rangeEndYear);
+		return Integer.toString(rangeStartYear) + " - " + Integer.toString(rangeStartYear + rangeEndYear);
 	}
 	
 	public long getId()
