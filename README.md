@@ -29,6 +29,10 @@ To start the backend server, run the following commands from terminal starting f
     cd restBackend
     ./mvnw spring-boot:run
 ```
+At startup, the backend will download the data and compute the wanted statistics.
+If the backend is keept running, this operation will be redone every 24 hours.
+
+**Note**: At startup, there is a time to wait before having the actual statistics computed. In the backend's log, it will be shown when the data is available by logging how many records where analyzed.
 
 Interacting with the backend
 ------------
@@ -48,6 +52,10 @@ This has to be accessed by using the userID and Password specified in the *appli
 
 ## Console Client
 
+The console client is configure to work with the rest backend and to dump the obtained data into csv files. 
+Data dumpers and data getters are actually extendible and decoupled so that it is easy to add another implementation like for example dumping on FrontEnd or getting data via DB.
+
+The client has to be compiled using maven, and can be run by launching the produced jar.
 
 
 
